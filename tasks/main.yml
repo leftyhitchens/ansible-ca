@@ -4,20 +4,19 @@
   file: path="{{config_path}}" state=directory
 - name: Create CA directory 
   become: true
-  file: path="{{config_path}}"/CA state=directory
-  mode: 0700
+  file: path="{{config_path}}/CA" state=directory
 - name: Create serial file
   become: true
   copy:
     src: ./files/serial
-    dest: "{{config_path}}"/CA/serial
+    dest: "{{config_path}}/CA/serial"
 - name: Create certindex
   become: true
   file:
-    path: "{{config_path}}"/CA/certindex
+    path: "{{config_path}}/CA/certindex"
     state: touch
 - name: Create openssl conf
   become: true
   template:
     src: files/ca.j2
-    dest: "{{config_path}}"/CA/ca.conf
+    dest: "{{config_path}}/CA/ca.conf"
