@@ -1,0 +1,3 @@
+---
+default_days: 3650 # cert will be good for ten years
+config_path: /etc/consul.d/ssl

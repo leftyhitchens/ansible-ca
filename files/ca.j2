@@ -1,0 +1,29 @@
+[ ca ]
+default_ca = devopsca
+
+[ devopsca ]
+unique_subject = no
+new_certs_dir = .
+certificate = ca.cert
+database = certindex
+private_key = privatekey.pem
+serial = serial
+default_days = {{default_days}}
+default_md = sha1
+policy = myca_policy
+x509_extensions = myca_extensions
+
+[ devopsca_policy ]
+commonName = supplied
+stateOrProvinceName = supplied
+countryName = supplied
+emailAddress = optional
+organizationName = supplied
+organizationalUnitName = optional
+
+[ devopsca_extensions ]
+basicConstraints = CA:false
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always
+keyUsage = digitalSignature,keyEncipherment
+extendedKeyUsage = serverAuth,clientAuth
