@@ -1,0 +1,17 @@
+---
+- name: Create SSL Config Directory
+  become: true
+  file: path=/etc/consul.d/ssl state=directory
+- name: Create CA directory 
+  become: true
+  file: path=/etc/consul.d/ssl/CA state=directory
+  mode: 0700
+- name: Create serial file
+  copy:
+    src: ./files/serial
+    dest: /etc/consul.d/ssl/CA/serial
+- name: Create certindex
+  become: true
+  file:
+    path: /etc/consul.d/ssl/CA/certindex
+    state: touch
