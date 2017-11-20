@@ -8,6 +8,7 @@ There are two default variables in this role:
 
 ```
 default_days: 3650 # specifies the number of days certs signed by this ca will be valid for
-
-config_path: /etc/consul.d/ssl  # specifies the path will the CA config files will live 
+ca_config_path: /etc/pki/ssl/CA  # specifies the path will the CA config files will live 
+cert_config_path: /etc/pki/tls/certs # path to certificates
+key_config_path: /etc/pki/tls/private # path to the server key
 ```

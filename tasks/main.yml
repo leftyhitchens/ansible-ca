@@ -1,22 +1,25 @@
 ---
-- name: Create SSL Config Directory
-  become: true
-  file: path="{{config_path}}" state=directory
 - name: Create CA directory 
   become: true
-  file: path="{{config_path}}/CA" state=directory
+  file: path="{{ca_config_path}}" state=directory
+- name: Create Cert directory 
+  become: true
+  file: path="{{cert_config_path}}" state=directory
+- name: Create Key directory 
+  become: true
+  file: path="{{key_config_path}}" state=directory
 - name: Create serial file
   become: true
   copy:
     src: ./files/serial
-    dest: "{{config_path}}/CA/serial"
+    dest: "{{ca_config_path}}/serial"
 - name: Create certindex
   become: true
   file:
-    path: "{{config_path}}/CA/certindex"
+    path: "{{ca_config_path}}/certindex"
     state: touch
 - name: Create openssl conf
   become: true
   template:
     src: files/ca.j2
-    dest: "{{config_path}}/CA/ca.conf"
+    dest: "{{ca_config_path}}/ca.conf"

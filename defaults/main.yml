@@ -1,3 +1,5 @@
 ---
 default_days: 3650 # cert will be good for ten years
-config_path: /etc/consul.d/ssl
+ca_config_path: /etc/pki/tls/CA
+cert_config_path: /etc/pki/tls/certs
+key_config_path: /etc/pki/tls/private
