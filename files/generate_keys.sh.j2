@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate the root certifiicate
-openssl req -x509 -newkey rsa:2048 -days {{default_days}} -nodes -out {{config_path}}/ca.cert
+openssl req -x509 -newkey rsa:2048 -days {{default_days}} -nodes -out $CA_PATH/ca.cert
 # generate the csr and the server key
-openssl req -newkey rsa:1024 -nodes -out {{cert_config_path}}/server.csr -keyout {{key_config_path}}/server.key
+openssl req -newkey rsa:1024 -nodes -out $CERT_PATH/server.csr -keyout $KEY_PATH/server.key
 # generate the self signed certificate
-openssl ca -batch -config {{ca_config_path}}/myca.conf -notext -in {{cert_config_path}}/server.csr -out {{cert_config_path}}/server.cert
+openssl ca -batch -config {{ca_config_path}}/myca.conf -notext -in $CERT_PATH/server.csr -out $CERT_PATH/server.cert

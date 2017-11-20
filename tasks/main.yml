@@ -18,8 +18,13 @@
   file:
     path: "{{ca_config_path}}/certindex"
     state: touch
-- name: Create openssl conf
+- name: Create openssl conf 
   become: true
   template:
     src: files/ca.j2
     dest: "{{ca_config_path}}/ca.conf"
+- name: Create generate_key.sh 
+  become: true
+  template:
+    src: files/generate_keys.sh.j2
+    dest: "{{ca_config_path}}/generate_keys.sh"
